@@ -1,3 +1,4 @@
+//moving images and games are basically called Sprite;
 class Sprite {
   constructor({
     position,
@@ -84,8 +85,10 @@ class Fighter extends Sprite {
     });
 
     this.velocity = velocity;
+    //character's width & height;
     this.width = 50;
     this.height = 150;
+    //for more robust & accurate movement;
     this.lastKey;
     this.attackBox = {
       position: {
@@ -98,6 +101,7 @@ class Fighter extends Sprite {
     };
     this.color = color;
     this.isAttacking;
+    this.attackType = 0;
     this.health = 100;
     this.framesCurrent = 0;
     this.framesElapsed = 0;
@@ -129,28 +133,37 @@ class Fighter extends Sprite {
       this.attackBox.height
     );*/
 
-    //move the player;
-    this.position.x += this.velocity.x;
-    this.position.y += this.velocity.y;
+    ////defining characters' movement along x and y-axis keeping boundaries intact;
+    if (
+      this.position.x + this.velocity.x >= 0 &&
+      this.position.x + this.velocity.x <= canvas.width - 60
+    )
+      this.position.x += this.velocity.x;
+    if (this.position.y + this.velocity.y >= 0)
+      this.position.y += this.velocity.y;
 
-    //gravity function
     if (this.position.y + this.height + this.velocity.y >= canvas.height - 96) {
-      //96->offset from bottom to the platform;
+      //96 -> offset from bottom to the platform;
       this.velocity.y = 0;
       //taking the gap into account created due to velocity;
-      this.position.y = 330; //330->offset from top to the platform;
+      this.position.y = 330; //330 -> offset from top to the platform;
+      //adds downward acceleration;
     } else this.velocity.y += gravity;
   }
 
-  attack() {
+  attack(type) {
     //but as soon as you do this, you'll go back to idle as you're not doing anything;
-    this.switchSprite('attack1');
+    if (type == 1) this.switchSprite('attack1');
+    else this.switchSprite('attack2');
     //hence a guard clause in switchSprite;
     this.isAttacking = true;
+    //setting the type of attack;
+    this.attackType = type;
   }
 
-  takeHit() {
-    this.health -= 10;
+  takeHit(type) {
+    if (type == 1) this.health -= 10;
+    else this.health -= 20;
 
     if (this.health <= 0) {
       this.switchSprite('death');
@@ -170,6 +183,13 @@ class Fighter extends Sprite {
       this.image === this.sprites.attack1.image &&
       //restricts to one attack only;
       this.framesCurrent < this.sprites.attack1.framesMax - 1
+    )
+      return;
+
+    if (
+      this.image === this.sprites.attack2.image &&
+      //restricts to one attack only;
+      this.framesCurrent < this.sprites.attack2.framesMax - 1
     )
       return;
 
@@ -217,6 +237,14 @@ class Fighter extends Sprite {
         if (this.image !== this.sprites.attack1.image) {
           this.image = this.sprites.attack1.image;
           this.framesMax = this.sprites.attack1.framesMax;
+          this.framesCurrent = 0;
+        }
+        break;
+
+      case 'attack2':
+        if (this.image !== this.sprites.attack2.image) {
+          this.image = this.sprites.attack2.image;
+          this.framesMax = this.sprites.attack2.framesMax;
           this.framesCurrent = 0;
         }
         break;

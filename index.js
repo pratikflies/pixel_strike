@@ -78,6 +78,10 @@ const player = new Fighter({
       imageSrc: './img/samuraiMack/Attack1.png',
       framesMax: 6,
     },
+    attack2: {
+      imageSrc: './img/samuraiMack/Attack2.png',
+      framesMax: 6,
+    },
     takeHit: {
       imageSrc: './img/samuraiMack/Take Hit - white silhouette.png',
       framesMax: 4,
@@ -140,6 +144,10 @@ const enemy = new Fighter({
     },
     attack1: {
       imageSrc: './img/kenji/Attack1.png',
+      framesMax: 4,
+    },
+    attack2: {
+      imageSrc: './img/kenji/Attack2.png',
       framesMax: 4,
     },
     takeHit: {
@@ -246,7 +254,7 @@ function animate() {
     // hit only at the 4th frame, when the sword is completely out;
     player.framesCurrent === 4
   ) {
-    enemy.takeHit();
+    enemy.takeHit(player.attackType);
     player.isAttacking = false;
 
     gsap.to('#enemyHealth', {
@@ -268,7 +276,7 @@ function animate() {
     enemy.isAttacking &&
     enemy.framesCurrent === 2
   ) {
-    player.takeHit();
+    player.takeHit(enemy.attackType);
     enemy.isAttacking = false;
 
     //gsap is an animation library -> eases decrease of health bar;
@@ -291,6 +299,7 @@ animate();
 
 window.addEventListener('keydown', (event) => {
   //player shouldn't be able to move after death;
+  console.log(event.key);
   if (!player.dead) {
     switch (event.key) {
       case 'd':
@@ -305,7 +314,10 @@ window.addEventListener('keydown', (event) => {
         player.velocity.y = -12;
         break;
       case ' ':
-        player.attack();
+        player.attack(1);
+        break;
+      case 'Control':
+        player.attack(2);
         break;
     }
   }
@@ -325,7 +337,10 @@ window.addEventListener('keydown', (event) => {
         enemy.velocity.y = -12;
         break;
       case 'ArrowDown':
-        enemy.attack();
+        enemy.attack(1);
+        break;
+      case 'Enter':
+        enemy.attack(2);
         break;
     }
   }
