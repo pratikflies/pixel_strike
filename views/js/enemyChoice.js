@@ -2,6 +2,7 @@ let myEnemy;
 function enemyChoice(choice) {
   if (choice === 'samuraiMack') {
     myEnemy = {
+      lives: player2Lives,
       //initial position of character;
       position: {
         x: 720,
@@ -74,6 +75,7 @@ function enemyChoice(choice) {
     };
   } else if (choice === 'kenji') {
     myEnemy = {
+      lives: player2Lives,
       position: {
         x: 720,
         y: 0,
@@ -140,6 +142,7 @@ function enemyChoice(choice) {
     };
   } else if (choice === 'evilWizard') {
     myEnemy = {
+      lives: player2Lives,
       position: {
         x: 720,
         y: 0,
@@ -204,6 +207,7 @@ function enemyChoice(choice) {
     };
   } else if (choice === 'heroKnight') {
     myEnemy = {
+      lives: player2Lives,
       position: {
         x: 700,
         y: 0,
@@ -268,6 +272,7 @@ function enemyChoice(choice) {
     };
   } else if (choice === 'medievalKing') {
     myEnemy = {
+      lives: player2Lives,
       position: {
         x: 720,
         y: 0,

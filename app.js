@@ -12,12 +12,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.post('/startGame', function (req, res, next) {
   const player1Name = req.body.player1Name;
   const player2Name = req.body.player2Name;
+  const player1Lives = req.body.player1Lives;
+  const player2Lives = req.body.player2Lives;
   const player1Character = req.body.player1Character;
   const player2Character = req.body.player2Character;
   const roundTime = req.body.roundTime;
   res.render('index', {
     player1Name: player1Name,
     player2Name: player2Name,
+    player1Lives: player1Lives,
+    player2Lives: player2Lives,
     player1Character: player1Character,
     player2Character: player2Character,
     roundTime: roundTime,

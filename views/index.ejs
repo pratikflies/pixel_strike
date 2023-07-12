@@ -171,6 +171,8 @@
           name="player2Character"
           value="<%= player2Character %>"
         />
+        <input type="hidden" name="player1Lives" value="<%= player1Lives %>" />
+        <input type="hidden" name="player2Lives" value="<%= player2Lives %>" />
         <input type="hidden" name="roundTime" value="<%= roundTime %>" />
         <input type="submit" value="Restart" />
       </form>
@@ -223,6 +225,8 @@
       if (player2Name.trim() === '') player2Name = 'Player2';
       let player1Character = '<%= player1Character %>';
       let player2Character = '<%= player2Character %>';
+      let player1Lives = '<%= player1Lives %>';
+      let player2Lives = '<%= player2Lives %>';
       let roundTime = '<%= roundTime %>';
       let healthDeduction;
       if (+roundTime === 30) healthDeduction = 17;

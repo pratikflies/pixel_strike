@@ -81,6 +81,7 @@ class Fighter extends Sprite {
     //contains all the frames for the player, enemy;
     sprites,
     attackBox = { offset: {}, width: undefined, height: undefined },
+    lives,
   }) {
     super({
       position,
@@ -114,6 +115,7 @@ class Fighter extends Sprite {
     this.framesHold = 5;
     this.sprites = sprites;
     this.dead = false;
+    this.lives = Number(lives);
 
     //adding the image to each state of the sprite;
     for (const sprite in this.sprites) {
@@ -132,12 +134,12 @@ class Fighter extends Sprite {
     this.attackBox.position.y = this.position.y + this.attackBox.offset.y;
 
     //drawing the attack box;
-    c.fillRect(
+    /*c.fillRect(
       this.attackBox.position.x,
       this.attackBox.position.y,
       this.attackBox.width,
       this.attackBox.height
-    );
+    );*/
 
     ////defining characters' movement along x and y-axis keeping boundaries intact;
     if (
@@ -188,19 +190,28 @@ class Fighter extends Sprite {
       attack1.currentTime = attack2.currentTime = 0;
       attack1.pause();
       attack2.play();
+      //creating the heavy attack visual effect;
       c.fillStyle = 'rgba(255, 0, 0, 00.40)';
       c.fillRect(0, 0, canvas.width, canvas.height);
       this.health -= 2 * healthDeduction;
     }
-    if (this.health >= 0) {
+    if (this.health > 0) {
       takeHit.currentTime = 0;
       takeHit.play();
     }
     if (this.health <= 0) {
+      this.lives--;
       attack1.currentTime = attack2.currentTime = death.currentTime = 0;
-      bgm.pause();
       death.play();
-      this.switchSprite('death');
+      if (this.lives <= 0) {
+        bgm.pause();
+        this.switchSprite('death');
+      } else {
+        this.health = 100;
+        this.position.x = 400;
+        this.position.y = 0;
+        this.switchSprite('fall');
+      }
     } else this.switchSprite('takeHit');
   }
 

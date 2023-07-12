@@ -78,9 +78,16 @@ function animate() {
   const player1Health = Math.max(player.health, 0);
   player.update();
   player1.innerText = `${player1Name} HP-${player1Health}`;
+  if (player.lives === 1) player1.innerText += ` 💖`;
+  else if (player.lives === 2) player1.innerText += ` 💖💖`;
+  else if (player.lives === 3) player1.innerText += ` 💖💖💖`;
   const player2Health = Math.max(enemy.health, 0);
   enemy.update();
-  player2.innerText = `HP-${player2Health} ${player2Name}`;
+  if (enemy.lives === 1) player2.innerText = `💖 `;
+  else if (enemy.lives === 2) player2.innerText = `💖💖 `;
+  else if (enemy.lives === 3) player2.innerText = `💖💖💖 `;
+  else player2.innerText = ``;
+  player2.innerText += ` HP-${player2Health} ${player2Name}`;
 
   player.velocity.x = 0;
   enemy.velocity.x = 0;

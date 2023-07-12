@@ -4,6 +4,7 @@ let myPlayer;
 function playerChoice(choice) {
   if (choice === 'samuraiMack') {
     myPlayer = {
+      lives: player1Lives,
       //initial position of character;
       position: {
         x: 200,
@@ -76,6 +77,7 @@ function playerChoice(choice) {
     };
   } else if (choice === 'evilWizard') {
     myPlayer = {
+      lives: player1Lives,
       position: {
         x: 200,
         y: 0,
@@ -140,6 +142,7 @@ function playerChoice(choice) {
     };
   } else if (choice === 'heroKnight') {
     myPlayer = {
+      lives: player1Lives,
       position: {
         x: 200,
         y: 0,
@@ -204,6 +207,7 @@ function playerChoice(choice) {
     };
   } else if (choice === 'martialHero') {
     myPlayer = {
+      lives: player1Lives,
       position: {
         x: 200,
         y: 0,
@@ -268,6 +272,7 @@ function playerChoice(choice) {
     };
   } else if (choice === 'medievalKing') {
     myPlayer = {
+      lives: player1Lives,
       position: {
         x: 200,
         y: 0,
