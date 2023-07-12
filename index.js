@@ -1,5 +1,7 @@
 const jump = document.getElementById('jumpMusic');
 const run = document.getElementById('runMusic');
+const player1 = document.getElementById('player1');
+const player2 = document.getElementById('player2');
 
 //canvas is responsible for drawing shapes on the screen;
 const canvas = document.querySelector('canvas');
@@ -25,7 +27,7 @@ const background = new Sprite({
 //setting up the shop;
 const shop = new Sprite({
   position: {
-    x: 600,
+    x: 630,
     y: 128,
   },
   imageSrc: './img/shop.png',
@@ -73,8 +75,12 @@ function animate() {
   //adding opacity to background;
   c.fillRect(0, 0, canvas.width, canvas.height);
 
+  const player1Health = Math.max(player.health, 0);
   player.update();
+  player1.innerText = `Ram HP-${player1Health}`;
+  const player2Health = Math.max(enemy.health, 0);
   enemy.update();
+  player2.innerText = `HP-${player2Health} Shyam`;
 
   player.velocity.x = 0;
   enemy.velocity.x = 0;
@@ -180,7 +186,17 @@ window.addEventListener('keydown', (event) => {
         keys.d.pressed = true;
         player.lastKey = 'd';
         break;
+      case 'D':
+        run.play();
+        keys.d.pressed = true;
+        player.lastKey = 'd';
+        break;
       case 'a':
+        run.play();
+        keys.a.pressed = true;
+        player.lastKey = 'a';
+        break;
+      case 'A':
         run.play();
         keys.a.pressed = true;
         player.lastKey = 'a';
@@ -192,17 +208,32 @@ window.addEventListener('keydown', (event) => {
           player.velocity.y = -15;
         }
         break;
-      case ' ':
+      case 'W':
+        if (player.velocity.y == 0) {
+          jump.currentTime = 0;
+          jump.play();
+          player.velocity.y = -15;
+        }
+        break;
+      case 'k':
         //stopping attack while attack;
         if (!enemy.isAttacking) {
           player.attack(1);
-          break;
         }
+        break;
+      case 'K':
+        //stopping attack while attack;
+        if (!enemy.isAttacking) {
+          player.attack(1);
+        }
+        break;
       case 'Control':
         if (!enemy.isAttacking) {
           player.attack(2);
-          break;
         }
+        break;
+      default:
+        break;
     }
   }
 
@@ -229,13 +260,15 @@ window.addEventListener('keydown', (event) => {
       case 'ArrowDown':
         if (!player.isAttacking) {
           enemy.attack(1);
-          break;
         }
+        break;
       case 'Enter':
         if (!player.isAttacking) {
           enemy.attack(2);
-          break;
         }
+        break;
+      default:
+        break;
     }
   }
 });
@@ -250,10 +283,22 @@ window.addEventListener('keyup', (event) => {
       run.currentTime = 0;
       keys.d.pressed = false;
       break;
+    case 'D':
+      run.pause();
+      run.currentTime = 0;
+      keys.d.pressed = false;
+      break;
     case 'a':
       run.pause();
       run.currentTime = 0;
       keys.a.pressed = false;
+      break;
+    case 'A':
+      run.pause();
+      run.currentTime = 0;
+      keys.a.pressed = false;
+      break;
+    default:
       break;
   }
 
@@ -268,6 +313,8 @@ window.addEventListener('keyup', (event) => {
       run.pause();
       run.currentTime = 0;
       keys.ArrowLeft.pressed = false;
+      break;
+    default:
       break;
   }
 });
