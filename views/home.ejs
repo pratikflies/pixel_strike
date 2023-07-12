@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="icon" type="image/png" href="/samurai.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <title>Pixel Strike - Home</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css" />
+  </head>
+  <body>
+    <div class="instructions">
+      <h2>1v1 CONTROLS</h2>
+      <div class="transparent-bg">
+        <h3>Player 1 Controls</h3>
+        <ul>
+          <li>Press 'A' to move left.</li>
+          <li>Press 'D' to move right.</li>
+          <li>Press 'K' for a nomral attack.</li>
+          <li>Press 'Ctrl' for a heavy attack.</li>
+        </ul>
+        <h3>Player 2 Controls</h3>
+        <ul>
+          <li>Press 'ArrowLeft' to move left.</li>
+          <li>Press 'ArrowRight' to move right.</li>
+          <li>Press 'ArrowDown' for a normal attack.</li>
+          <li>Press 'Enter' for a special attack.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="customization">
+      <h2 style="margin-bottom: 25px">CUSTOMIZATION</h2>
+      <form action="/startGame" method="POST">
+        <label for="player1Name">Player 1 Name:</label>
+        <input type="text" id="player1Name" name="player1Name" /><br /><br />
+
+        <label for="player2Name">Player 2 Name:</label>
+        <input type="text" id="player2Name" name="player2Name" /><br /><br />
+
+        <label for="player1Character">Choose Player 1 character:</label>
+        <select id="player1Character" name="player1Character">
+          <option value="samuraiMack">Samurai Mack</option>
+          <option value="martialHero">Martial Hero</option>
+          <option value="evilWizard">Evil Wizard</option>
+          <option value="heroKnight">Hero Knight</option></select
+        ><br /><br />
+
+        <label for="player2Character">Choose Player 2 character:</label>
+        <select id="player2Character" name="player2Character">
+          <option value="samuraiMack">Samurai Mack</option>
+          <option value="kenji">Kenji</option>
+          <option value="evilWizard">Evil Wizard</option>
+          <option value="heroKnight">Hero Knight</option></select
+        ><br /><br />
+
+        <label for="roundTime">Round Time:</label>
+        <select id="roundTime" name="roundTime">
+          <option value="30">30 seconds</option>
+          <option value="60">60 seconds</option>
+          <option value="90">90 seconds</option>
+          <option value="120">120 seconds</option>
+          <option value="180">180 seconds</option>
+          <option value="300">300 seconds</option></select
+        ><br /><br />
+
+        <input type="submit" value="Start Game" />
+      </form>
+    </div>
+  </body>
+</html>

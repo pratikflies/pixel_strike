@@ -1,0 +1,96 @@
+* {
+  font-family: 'Press Start 2P', cursive;
+}
+
+body {
+  background-image: url('https://images.unsplash.com/photo-1553986782-9f6de60b51b4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2049&q=80');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200vh;
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  overflow-y: auto;
+}
+
+.instructions {
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.transparent-bg {
+  background-color: transparent;
+}
+
+.instructions h2 {
+  color: black;
+  margin-bottom: 10px;
+}
+
+.instructions h3 {
+  color: black;
+}
+
+.instructions ul {
+  text-align: left;
+  margin-left: 20px;
+  color: black;
+}
+
+.instructions li {
+  margin-bottom: 10px;
+}
+
+.customization {
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 30px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.customization h2 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.customization label {
+  margin-bottom: 5px;
+  color: #333;
+  font-weight: bold;
+}
+
+.customization select,
+.customization input[type='text'] {
+  width: 200px;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.customization input[type='submit'] {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.customization input[type='submit']:hover {
+  background-color: #45a049;
+}
