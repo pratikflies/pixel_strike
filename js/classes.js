@@ -153,12 +153,23 @@ class Fighter extends Sprite {
 
   attack(type) {
     //but as soon as you do this, you'll go back to idle as you're not doing anything;
-    if (type == 1) this.switchSprite('attack1');
-    else this.switchSprite('attack2');
-    //hence a guard clause in switchSprite;
-    this.isAttacking = true;
-    //setting the type of attack;
-    this.attackType = type;
+    if (type == 1) {
+      this.switchSprite('attack1');
+      //hence a guard clause in switchSprite;
+      this.isAttacking = true;
+      //setting the type of attack;
+      this.attackType = type;
+    } else {
+      //heavy attach so we set a delay of 700ms;
+      setTimeout(
+        function () {
+          this.switchSprite('attack2');
+          this.isAttacking = true;
+          this.attackType = type;
+        }.bind(this),
+        700
+      );
+    }
   }
 
   takeHit(type) {
