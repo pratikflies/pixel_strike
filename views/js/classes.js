@@ -183,14 +183,14 @@ class Fighter extends Sprite {
       attack1.currentTime = attack2.currentTime = 0;
       attack2.pause();
       attack1.play();
-      this.health -= 10;
+      this.health -= healthDeduction;
     } else {
       attack1.currentTime = attack2.currentTime = 0;
       attack1.pause();
       attack2.play();
-      c.fillStyle = 'rgba(255, 0, 0, 00.20)';
+      c.fillStyle = 'rgba(255, 0, 0, 00.40)';
       c.fillRect(0, 0, canvas.width, canvas.height);
-      this.health -= 20;
+      this.health -= 2 * healthDeduction;
     }
     if (this.health >= 0) {
       takeHit.currentTime = 0;

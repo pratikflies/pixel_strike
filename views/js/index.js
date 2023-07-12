@@ -257,7 +257,12 @@ window.addEventListener('keydown', (event) => {
           enemy.velocity.y = -15;
         }
         break;
-      case 'ArrowDown':
+      case 'l':
+        if (!player.isAttacking) {
+          enemy.attack(1);
+        }
+        break;
+      case 'L':
         if (!player.isAttacking) {
           enemy.attack(1);
         }

@@ -27,7 +27,11 @@
     <audio id="runMusic" src="/audio/run.mp3" loop="loop"></audio>
     <audio id="backgroundMusic" src="/audio/background.mp3" loop="loop"></audio>
   </head>
-  <body>
+  <body
+    style="
+      background-image: url('https://images.unsplash.com/photo-1553986782-9f6de60b51b4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2049&q=80');
+    "
+  >
     <div style="position: relative; display: inline-block">
       <div
         style="
@@ -151,10 +155,61 @@
       >
         Player2
       </div>
-      <canvas></canvas>
+      <canvas style="border: 2px solid black"></canvas>
     </div>
-
+    <div class="button-container">
+      <form action="/startGame" method="POST">
+        <input type="hidden" name="player1Name" value="<%= player1Name %>" />
+        <input type="hidden" name="player2Name" value="<%= player2Name %>" />
+        <input
+          type="hidden"
+          name="player1Character"
+          value="<%= player1Character %>"
+        />
+        <input
+          type="hidden"
+          name="player2Character"
+          value="<%= player2Character %>"
+        />
+        <input type="hidden" name="roundTime" value="<%= roundTime %>" />
+        <input type="submit" value="Restart" />
+      </form>
+      <form action="/" method="GET">
+        <input type="submit" value="Go Back" />
+      </form>
+    </div>
     <!--gsap animation for health hit-->
+    <style>
+      .button-container {
+        display: flex;
+        justify-content: center;
+        margin-right: 220px;
+      }
+
+      input[type='submit'] {
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border: 2px solid black;
+        transition: all 0.3s ease-in-out;
+        margin-left: 30px;
+        margin-right: 30px;
+        border-radius: 5px;
+        margin-top: 10px;
+      }
+
+      input[type='submit']:hover {
+        background-color: #45a049;
+        scale: 1.1;
+      }
+    </style>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"
       integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ=="
@@ -169,6 +224,13 @@
       let player1Character = '<%= player1Character %>';
       let player2Character = '<%= player2Character %>';
       let roundTime = '<%= roundTime %>';
+      let healthDeduction;
+      if (+roundTime === 30) healthDeduction = 17;
+      else if (+roundTime === 60) healthDeduction = 15;
+      else if (+roundTime === 90) healthDeduction = 12;
+      else if (+roundTime === 120) healthDeduction = 9;
+      else if (+roundTime === 180) healthDeduction = 7;
+      else if (+roundTime === 300) healthDeduction = 4;
     </script>
     <script src="/js/utils.js"></script>
     <script src="/js/classes.js"></script>

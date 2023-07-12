@@ -28,5 +28,9 @@ app.get('/', function (req, res, next) {
   return res.render('home');
 });
 
+app.use(function (req, res, next) {
+  return res.render('404');
+});
+
 console.log('Connected');
 app.listen(5000);
