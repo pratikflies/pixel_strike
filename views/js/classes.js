@@ -132,12 +132,12 @@ class Fighter extends Sprite {
     this.attackBox.position.y = this.position.y + this.attackBox.offset.y;
 
     //drawing the attack box;
-    /*c.fillRect(
+    c.fillRect(
       this.attackBox.position.x,
       this.attackBox.position.y,
       this.attackBox.width,
       this.attackBox.height
-    );*/
+    );
 
     ////defining characters' movement along x and y-axis keeping boundaries intact;
     if (

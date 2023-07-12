@@ -19,10 +19,10 @@ function determineWinner({ player, enemy, timerId }) {
     document.querySelector('#displayText').innerHTML = 'Tie';
   } else if (player.health > enemy.health) {
     enemy.switchSprite('death');
-    document.querySelector('#displayText').innerHTML = 'Player 1 Wins';
+    document.querySelector('#displayText').innerHTML = `${player1Name} Wins`;
   } else {
     player.switchSprite('death');
-    document.querySelector('#displayText').innerHTML = 'Player 2 Wins';
+    document.querySelector('#displayText').innerHTML = `${player2Name} Wins`;
   }
 }
 

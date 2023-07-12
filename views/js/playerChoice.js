@@ -266,6 +266,70 @@ function playerChoice(choice) {
         height: 50,
       },
     };
+  } else if (choice === 'medievalKing') {
+    myPlayer = {
+      position: {
+        x: 200,
+        y: 0,
+      },
+      velocity: {
+        x: 0,
+        y: 0,
+      },
+      offset: {
+        x: 0,
+        y: 0,
+      },
+      imageSrc: '/img/medievalKing/Idle.png',
+      framesMax: 8,
+      scale: 2.5,
+      offset: {
+        x: 155,
+        y: 112,
+      },
+      sprites: {
+        idle: {
+          imageSrc: '/img/medievalKing/Idle.png',
+          framesMax: 8,
+        },
+        run: {
+          imageSrc: '/img/medievalKing/Run.png',
+          framesMax: 8,
+        },
+        jump: {
+          imageSrc: '/img/medievalKing/Jump.png',
+          framesMax: 2,
+        },
+        fall: {
+          imageSrc: '/img/medievalKing/Fall.png',
+          framesMax: 2,
+        },
+        attack1: {
+          imageSrc: '/img/medievalKing/Attack1.png',
+          framesMax: 4,
+        },
+        attack2: {
+          imageSrc: '/img/medievalKing/Attack2.png',
+          framesMax: 4,
+        },
+        takeHit: {
+          imageSrc: '/img/medievalKing/Take Hit - white silhouette.png',
+          framesMax: 4,
+        },
+        death: {
+          imageSrc: '/img/medievalKing/Death.png',
+          framesMax: 6,
+        },
+      },
+      attackBox: {
+        offset: {
+          x: 100,
+          y: 50,
+        },
+        width: 170,
+        height: 50,
+      },
+    };
   }
   return myPlayer;
 }

@@ -266,6 +266,70 @@ function enemyChoice(choice) {
         height: 50,
       },
     };
+  } else if (choice === 'medievalKing') {
+    myEnemy = {
+      position: {
+        x: 720,
+        y: 0,
+      },
+      velocity: {
+        x: 0,
+        y: 0,
+      },
+      offset: {
+        x: 0,
+        y: 0,
+      },
+      imageSrc: '/imgEnemy/medievalKing/Idle.png',
+      framesMax: 8,
+      scale: 2.5,
+      offset: {
+        x: 155,
+        y: 112,
+      },
+      sprites: {
+        idle: {
+          imageSrc: '/imgEnemy/medievalKing/Idle.png',
+          framesMax: 8,
+        },
+        run: {
+          imageSrc: '/imgEnemy/medievalKing/Run.png',
+          framesMax: 8,
+        },
+        jump: {
+          imageSrc: '/imgEnemy/medievalKing/Jump.png',
+          framesMax: 2,
+        },
+        fall: {
+          imageSrc: '/imgEnemy/medievalKing/Fall.png',
+          framesMax: 2,
+        },
+        attack1: {
+          imageSrc: '/imgEnemy/medievalKing/Attack1.png',
+          framesMax: 4,
+        },
+        attack2: {
+          imageSrc: '/imgEnemy/medievalKing/Attack2.png',
+          framesMax: 4,
+        },
+        takeHit: {
+          imageSrc: '/imgEnemy/medievalKing/Take Hit - white silhouette.png',
+          framesMax: 4,
+        },
+        death: {
+          imageSrc: '/imgEnemy/medievalKing/Death.png',
+          framesMax: 6,
+        },
+      },
+      attackBox: {
+        offset: {
+          x: -210,
+          y: 50,
+        },
+        width: 170,
+        height: 50,
+      },
+    };
   }
   return myEnemy;
 }

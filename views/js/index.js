@@ -128,8 +128,8 @@ function animate() {
       rectangle2: enemy,
     }) &&
     player.isAttacking &&
-    // hit only at the 4th frame, when the sword is completely out;
-    player.framesCurrent === 4
+    // hit only at the 2nd frame, when the sword is completely out;
+    player.framesCurrent === 2
   ) {
     enemy.takeHit(player.attackType);
     player.isAttacking = false;
@@ -140,7 +140,7 @@ function animate() {
   }
 
   // if player attacks but misses (i.e., no collision);
-  if (player.isAttacking && player.framesCurrent === 4) {
+  if (player.isAttacking && player.framesCurrent === 2) {
     player.isAttacking = false;
   }
 
