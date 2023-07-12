@@ -1,3 +1,9 @@
+const attack1 = document.getElementById('attack1Music');
+const attack2 = document.getElementById('attack2Music');
+const death = document.getElementById('deathMusic');
+const bgm = document.getElementById('backgroundMusic');
+const takeHit = document.getElementById('takeHitMusic');
+
 //moving images and games are basically called Sprite;
 class Sprite {
   constructor({
@@ -173,10 +179,27 @@ class Fighter extends Sprite {
   }
 
   takeHit(type) {
-    if (type == 1) this.health -= 10;
-    else this.health -= 20;
-
+    if (type == 1) {
+      attack1.currentTime = attack2.currentTime = 0;
+      attack2.pause();
+      attack1.play();
+      this.health -= 10;
+    } else {
+      attack1.currentTime = attack2.currentTime = 0;
+      attack1.pause();
+      attack2.play();
+      c.fillStyle = 'rgba(255, 0, 0, 00.20)';
+      c.fillRect(0, 0, canvas.width, canvas.height);
+      this.health -= 20;
+    }
+    if (this.health >= 0) {
+      takeHit.currentTime = 0;
+      takeHit.play();
+    }
     if (this.health <= 0) {
+      attack1.currentTime = attack2.currentTime = death.currentTime = 0;
+      bgm.pause();
+      death.play();
       this.switchSprite('death');
     } else this.switchSprite('takeHit');
   }

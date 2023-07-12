@@ -1,3 +1,6 @@
+const jump = document.getElementById('jumpMusic');
+const run = document.getElementById('runMusic');
+
 //canvas is responsible for drawing shapes on the screen;
 const canvas = document.querySelector('canvas');
 const c = canvas.getContext('2d');
@@ -31,8 +34,8 @@ const shop = new Sprite({
   framesMax: 6,
 });
 
-let choicePlayer = 'heroKnight';
-let choiceEnemy = 'evilWizard';
+let choicePlayer = 'martialHero';
+let choiceEnemy = 'kenji';
 const player = new Fighter(playerChoice(choicePlayer));
 const enemy = new Fighter(enemyChoice(choiceEnemy));
 
@@ -53,6 +56,7 @@ const keys = {
 
 //starting timer before animation begins;
 decreaseTimer();
+
 function animate() {
   //creating an infinite loop, animating objects frame by frame;
   window.requestAnimationFrame(animate);
@@ -166,26 +170,39 @@ animate();
 
 window.addEventListener('keydown', (event) => {
   //player shouldn't be able to move after death;
-  console.log(event.key);
+  if (!player.dead && !enemy.dead) bgm.play();
+  else bgm.pause();
+
   if (!player.dead) {
     switch (event.key) {
       case 'd':
+        run.play();
         keys.d.pressed = true;
         player.lastKey = 'd';
         break;
       case 'a':
+        run.play();
         keys.a.pressed = true;
         player.lastKey = 'a';
         break;
       case 'w':
-        player.velocity.y = -12;
+        if (player.velocity.y == 0) {
+          jump.currentTime = 0;
+          jump.play();
+          player.velocity.y = -15;
+        }
         break;
       case ' ':
-        player.attack(1);
-        break;
+        //stopping attack while attack;
+        if (!enemy.isAttacking) {
+          player.attack(1);
+          break;
+        }
       case 'Control':
-        player.attack(2);
-        break;
+        if (!enemy.isAttacking) {
+          player.attack(2);
+          break;
+        }
     }
   }
 
@@ -193,33 +210,49 @@ window.addEventListener('keydown', (event) => {
   if (!enemy.dead) {
     switch (event.key) {
       case 'ArrowRight':
+        run.play();
         keys.ArrowRight.pressed = true;
         enemy.lastKey = 'ArrowRight';
         break;
       case 'ArrowLeft':
+        run.play();
         keys.ArrowLeft.pressed = true;
         enemy.lastKey = 'ArrowLeft';
         break;
       case 'ArrowUp':
-        enemy.velocity.y = -12;
+        if (enemy.velocity.y == 0) {
+          jump.currentTime = 0;
+          jump.play();
+          enemy.velocity.y = -15;
+        }
         break;
       case 'ArrowDown':
-        enemy.attack(1);
-        break;
+        if (!player.isAttacking) {
+          enemy.attack(1);
+          break;
+        }
       case 'Enter':
-        enemy.attack(2);
-        break;
+        if (!player.isAttacking) {
+          enemy.attack(2);
+          break;
+        }
     }
   }
 });
 
 window.addEventListener('keyup', (event) => {
+  if (!player.dead && !enemy.dead) bgm.play();
+  else bgm.pause();
   //player keys;
   switch (event.key) {
     case 'd':
+      run.pause();
+      run.currentTime = 0;
       keys.d.pressed = false;
       break;
     case 'a':
+      run.pause();
+      run.currentTime = 0;
       keys.a.pressed = false;
       break;
   }
@@ -227,9 +260,13 @@ window.addEventListener('keyup', (event) => {
   // enemy keys;
   switch (event.key) {
     case 'ArrowRight':
+      run.pause();
+      run.currentTime = 0;
       keys.ArrowRight.pressed = false;
       break;
     case 'ArrowLeft':
+      run.pause();
+      run.currentTime = 0;
       keys.ArrowLeft.pressed = false;
       break;
   }
