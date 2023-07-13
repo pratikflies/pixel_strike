@@ -13,6 +13,16 @@ The project is a 1v1 2D fighting game developed using HTML Canvas and JavaScript
 Techstacks used: HTML Canvas, JavaScript, Node.js, Express, EJS, CSS.
 Methodology: Object-oriented programming, modular approach. 
 
+Build stages: 
+
+![image](https://github.com/pratikflies/pixel_strike/assets/76919061/9d5d14c1-2abd-427e-87d1-d93d1396c578)
+
+![image](https://github.com/pratikflies/pixel_strike/assets/76919061/3c8c4d66-556c-441b-9abc-b87a9ea25c9a)
+
+![image](https://github.com/pratikflies/pixel_strike/assets/76919061/693e0303-7ace-4009-9429-b9262f036289)
+
+![image](https://github.com/pratikflies/pixel_strike/assets/76919061/c27967d2-13b4-4eff-a88a-198a32474bc8)
+
 Homepage: 
 
 ![image](https://github.com/pratikflies/pixel_strike/assets/76919061/0e0166de-c316-4578-bb8a-6fd1066d91b1)
